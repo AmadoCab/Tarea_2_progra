@@ -1,0 +1,13 @@
+\begin{center}
+\begin{tikzpicture}
+% Nodes
+\node (qs) at (0,0) []{$q_{\text{s}}$};
+\node (qa) at (5,0) []{$q_{\text{a}}$};
+% Circles
+\draw[] (qs) circle[radius=0.5];
+\draw[] (qa) circle[radius=0.4] circle[radius=0.5];
+% Edges
+\draw[Latex-] ($(qs)+(-0.5,0)$) to[] +(-0.5,0);
+\draw[-Latex] ($(qs)+(0:0.5)$) to[] node[auto]{$(\texttt{a}^*\texttt{b})(\texttt{a}|(\texttt{b}\texttt{a}^*\texttt{b}))^*$} ($(qa)+(180:0.5)$);
+\end{tikzpicture}
+\end{center}

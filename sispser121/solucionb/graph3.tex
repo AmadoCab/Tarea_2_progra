@@ -1,0 +1,17 @@
+\begin{center}
+\begin{tikzpicture}[rotate=120]
+% Nodes
+\node (qs) at (60:2.5) []{$q_s$};
+\node (q1) at (0,0) []{$1$};
+\node (qa) at (-120:5) []{$q_a$};
+% Circles
+\draw[] (qs) circle[radius=0.5];
+\draw[] (q1) circle[radius=0.5];
+\draw[] (qa) circle[radius=0.35] circle[radius=0.5];
+% Edges
+\draw[Latex-] ($(qs)+(60:0.5)$) to[] +(60:0.5);
+\draw[-Latex] ($(qs)+(-120:0.5)$) to[] node[auto,swap]{$\varepsilon$} ($(q1)+(60:0.5)$);
+\draw[-Latex] ($(q1)+(-120:0.5)$) to[] node[auto,swap]{$\varepsilon$\texttt{|((a|b)(a|(bb)$^*$)$^*$b)}} ($(qa)+(60:0.5)$);
+\draw[-Latex,rotate=-120] ($(q1)+(60:0.5)$) arc[x radius=0.25,y radius=0.5,start angle=0,end angle=180] node[midway,auto,swap]{\texttt{(a|b)(a|(bb)$^*$)$^*$(ba)}};
+\end{tikzpicture}
+\end{center}

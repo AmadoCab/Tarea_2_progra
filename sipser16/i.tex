@@ -1,0 +1,22 @@
+\begin{center}
+\begin{tikzpicture}
+% Nodes
+\node (q0) at (0,0) []{$q_0$};
+\node (q1) at (2.5,0) []{$q_1$};
+\node (q2) at (5,0) []{$q_2$};
+\node (q3) at (2.5,2) []{$q_3$};
+% Circles
+\draw[] (q0) circle[radius=0.5];
+\draw[] (q1) circle[radius=0.35] circle[radius=0.5];
+\draw[] (q2) circle[radius=0.35] circle[radius=0.5];
+\draw[] (q3) circle[radius=0.5];
+% Edges
+\draw[Latex-] ($(q0)+(180:0.5)$) to[] +(-0.5,0);
+\draw[-Latex] ($(q0)+(0:0.5)$) to[] node[auto,swap]{$1$} ($(q1)+(180:0.5)$);
+\draw[-Latex] ($(q1)+(30:0.5)$) to[bend left] node[auto]{$0,1$} ($(q2)+(150:0.5)$);
+\draw[Latex-] ($(q1)+(-30:0.5)$) to[bend right] node[auto]{$1$} ($(q2)+(-150:0.5)$);
+\draw[-Latex] ($(q0)+(90:0.5)$) to[bend left] node[auto]{$0$} ($(q3)+(180:0.5)$);
+\draw[-Latex] ($(q2)+(90:0.5)$) to[bend right] node[auto,swap]{$0$} ($(q3)+(0:0.5)$);
+\draw[-Latex] ($(q3)+(60:0.5)$) arc[x radius=0.25,y radius=0.5,start angle=0,end angle=180] node[midway,auto,swap]{$0,1$};
+\end{tikzpicture}
+\end{center}

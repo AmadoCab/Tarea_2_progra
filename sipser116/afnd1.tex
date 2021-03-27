@@ -1,0 +1,15 @@
+\begin{tikzpicture}
+% Nodes
+\node (q1) at (0,0) []{$1$};
+\node (q2) at (-90:2.5) []{$2$};
+% Circles
+\draw[] (q1) circle[radius=0.35] circle[radius=0.5];
+\draw[] (q2) circle[radius=0.5];
+% Edges
+\draw[Latex-] ($(q1)+(-0.5,0)$) to[] +(-0.5,0);
+\draw[-Latex] ($(q1)+(-60:0.5)$) to[bend left] node[auto]{$a,b$}
+($(q2)+(60:0.5)$);
+\draw[Latex-] ($(q1)+(-120:0.5)$) to[bend right] node[auto,swap]{$b$}
+($(q2)+(120:0.5)$);
+\draw[-Latex] ($(q1)+(-30:0.5)$) arc[y radius=0.25,x radius=0.5,start angle=-105,end angle=105] node[midway,auto,swap]{$a$};
+\end{tikzpicture}

@@ -1,0 +1,384 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{dsfont}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{array}
+\usepackage{mathtools}
+\usepackage[spanish]{babel}
+\decimalpoint
+
+\usetikzlibrary{arrows.meta, calc}
+\setlength{\parindent}{0pt}
+\newcommand{\nulls}{\varnothing}
+
+\title{Tarea 2, Progra 2}
+\author{Amado Alberto Cabrera Estrada\\
+201905757}
+\date{March 2021}
+
+\begin{document}
+
+\maketitle
+
+\section*{Jurado}
+\subsection*{Ejercicio 3.1}
+Describir los lenguajes representados por las siguientes expresiones regulares definidas sobre el alfabeto $\Sigma=\{\texttt{a},\texttt{b},\texttt{c}\}$.
+\begin{itemize}
+    \item $(\texttt{a}|\texttt{b})^*\texttt{c}$\\
+    Las cadenas aceptadas empiezan por cualquier cadena formada por \texttt{a}, \texttt{b} y $\varepsilon$ y acaban en c.
+    
+    \item $(\texttt{aa}^+)(\texttt{bb}^*)$\\
+    Las cadenas aceptadas empiezan por \texttt{a} de dos a infinitas veces y acaban con \texttt{b} de una a infinitas veces.
+    
+    \item $(\texttt{aa}^+)|(\texttt{bb}^*)$\\
+    Las cadenas aceptadas son: \texttt{a} de dos a infinitas veces o \texttt{b} de una a infinitas veces (solo puede ser aceptada una u otra, no ambas a la vez).
+    
+    \item $\texttt{a}^*\texttt{b}^*\texttt{c}^*$\\
+    Las cadenas aceptadas llevan \texttt{a} de cero a infinitas veces, concatenado con \texttt{b} de cero a infinitas veces, concatenado con \texttt{c} de cero a infinitas veces.
+\end{itemize}
+
+\subsection*{Ejercicio 3.2}
+Representar, mediante una expresión regular, los siguientes lenguajes
+\begin{enumerate}
+    \item  Considerando que $\Sigma=\{\texttt{a}\}$
+    \begin{enumerate}[a)]
+        \item el lenguaje formado por cadenas de letras \texttt{a} de longitud par\\
+        \texttt{(aa)$^*$}
+        
+        \item el lenguaje formado por cadenas de letras \texttt{a} de longitud impar\\
+        \texttt{a(aa)$^*$}
+    \end{enumerate}
+    
+    \item Considerando que $\Sigma=\{\texttt{a},\texttt{b}\}$ , el lenguaje formado por cadenas de letras a y letras b, de longitud impar, en las que se van alternando los dos símbolos, es decir, nunca aparece el mismo símbolo dos veces seguidas. Por ejemplo: \texttt{abababa} o \texttt{bab}.\\
+    \texttt{(b(ab)$^*$)|(a(ba)$^*$)}
+\end{enumerate}
+
+\section*{Sipser}
+\subsection*{Ejercicio 1.1}
+Teniendo los diagramas de estado de dos AFD, $M_1$ y $M_2$. Responda las siguientes preguntas acerca de estas máquinas.
+\begin{multicols}{2}
+\begin{center}
+\input{sipser11/machine1}\\
+$M_1$
+\end{center}
+
+\begin{center}
+\input{sipser11/machine2}\\
+$M_2$
+\end{center}
+\end{multicols}
+\begin{enumerate}[a.]
+    \item ¿Cuál es el estado inicial?\\
+    $\boldsymbol{M_1}:$ El estado inicial es $q_1$.\\
+    $\boldsymbol{M_2}:$ El estado inicial es $q_1$.
+    
+    \item ¿Cuál es el conjunto de estados de aceptación\\
+    $\boldsymbol{M_1}:$ El conjunto de estados de aceptación es $\{q_2\}$\\
+    $\boldsymbol{M_2}:$ El conjunto de estados de aceptación es $\{q_1,q_4\}$
+    
+    \item ¿Cuál es la secuencia por los que pasa la máquina a través de la cadena \texttt{aabb}?\\
+    $\boldsymbol{M_1}:$ La secuencia sería  $q_1\to q_2\to q_3\to q_1\to q_1$\\
+    $\boldsymbol{M_2}:$ La secuencia sería  $q_1\to q_1\to q_1\to q_2\to q_4$
+    
+    \item ¿Acepta la máquina la cadena \texttt{aabb}?\\
+    $\boldsymbol{M_1}:$ No, queda en el estado $q_1$ y no es de aceptación.\\
+    $\boldsymbol{M_2}:$ Sí, pues acaba en el estado $q_4$.
+    
+    \item ¿Acepta la máquina la cadena $\boldsymbol{\varepsilon}$?\\
+    $\boldsymbol{M_1}:$ No, pues $q_1$ no es de aceptación.\\
+    $\boldsymbol{M_2}:$ Sí, $q_1$ es de aceptación.\\
+\end{enumerate}
+
+\newpage
+
+\subsection*{Ejercicio 1.3}
+La descripción formal de un AFD $M$ es $(\{q_1,\,q_2,q_3,\,q_4,\,q_5\},\ \{u,\,d\},\ \delta,\ q_3,\ \{q_3\})$, donde $\delta$ está dado por la siguiente tabla. Dé el diagrama de estado de esta máquina.
+\begin{center}
+    \input{table1.3}
+    \input{sipser13/graph}\\
+    {\scriptsize parece un elevador}
+\end{center}
+
+\newpage
+
+\subsection*{Ejercicio 1.4}
+Cada uno de los siguientes lenguajes es la intersección de dos lenguajes más simples. En cada parte construya los AFD para los lenguajes simples y luego combínelos usando la construcción discutida en la nota al pie de página 3 de la página 46 para dar el diagrama de estado del AFD para el lenguaje dado. Para cada uno, $\Sigma=\{\texttt{a},\texttt{b}\}$
+\begin{enumerate}[a.]
+    \item $\{\omega|\omega\text{ tiene al menos tres letras \texttt{a} y al menos dos letras \texttt{b}}\}$
+    \begin{itemize}
+        \item $\{\omega|\omega\text{ tiene al menos tres letras \texttt{a}}\}$
+        \input{sipser14/a/a1}
+        
+        \item $\{\omega|\omega\text{ tiene al menos dos letras \texttt{b}}\}$
+        \input{sipser14/a/a2}
+        
+        \item Haciendo la tabla
+        \input{sipser14/a/at}
+        
+        \item Haciendo el autómata
+        \input{sipser14/a/ar}
+    \end{itemize}
+    
+    
+    \item $\{\omega|\omega\text{ tiene exactamente dos letras \texttt{a} y al menos dos \texttt{b}}\}$
+    \begin{itemize}
+        \item $\{\omega|\omega\text{ tiene exactamente dos letras \texttt{a}}\}$
+        \input{sipser14/b/b1}
+        
+        \item $\{\omega|\omega\text{ tiene al menos dos \texttt{b}}\}$
+        \input{sipser14/b/b2}
+        
+        \item Haciendo la tabla
+        \input{sipser14/b/bt}
+        
+        \item Haciendo el autómata
+        \input{sipser14/b/br}
+    \end{itemize}    
+    
+    \item $\{\omega|\omega\text{ tiene un número par de letras \texttt{a} y una o dos letras \texttt{b}}\}$
+    \begin{itemize}
+        \item $\{\omega|\omega\text{ tiene un número par de letras \texttt{a}}\}$
+        \input{sipser14/c/c1}
+        
+        \item $\{\omega|\omega\text{ tiene una o dos letras \texttt{b}}\}$
+        \input{sipser14/c/c2}
+        
+        \item Haciendo la tabla
+        \input{sipser14/c/ct}
+        
+        \item Haciendo el autómata
+        \input{sipser14/c/cr}
+    \end{itemize}    
+    
+    \item $\{\omega|\omega\text{ tiene un número par de letras \texttt{a} y cada \texttt{a} se sigue por al menos de una \texttt{b}}\}$
+    
+    \begin{itemize}
+        \item $\{\omega|\omega\text{ tiene un número par de letras \texttt{a}}\}$
+        \input{sipser14/d/d1}
+        
+        \item $\{\omega|\omega\text{ cada \texttt{a} se sigue por al menos de una \texttt{b}}\}$
+        \input{sipser14/d/d2}
+        
+        \item Haciendo la tabla
+        \input{sipser14/d/dt}
+        
+        \item Haciendo el autómata
+        \input{sipser14/d/dr}
+    \end{itemize}    
+    
+    \item $\{\omega|\omega \text{ comienza con una \texttt{a} y tiene como máximo una \texttt{b}}\}$
+    \begin{itemize}
+        \item $\{\omega|\omega\text{ comienza con una \texttt{a}}\}$
+        \input{sipser14/e/e1}
+        
+        \item $\{\omega|\omega\text{ tiene como máximo una \texttt{b}}\}$
+        \input{sipser14/e/e2}
+        
+        \item Haciendo la tabla
+        \input{sipser14/e/et}
+        
+        \item Haciendo el autómata
+        \input{sipser14/e/er}
+    \end{itemize}    
+    
+    \item $\{\omega|\omega \text{ tiene un número impar de letras \texttt{a} y termina con una \texttt{b}}\}$
+    \begin{itemize}
+        \item $\{\omega|\omega\text{ tiene un número impar de letras \texttt{a}}\}$
+        \input{sipser14/f/f1}
+        
+        \item $\{\omega|\omega\text{ termina con una \texttt{b}}\}$
+        \input{sipser14/f/f2}
+        
+        \item Haciendo la tabla
+        \input{sipser14/f/ft}
+        
+        \item Haciendo el autómata
+        \input{sipser14/f/fr}
+    \end{itemize}    
+    
+    \item $\{\omega|\omega \text{ tiene longitud par y un número impar de letras \texttt{a}}\}$
+    \begin{itemize}
+        \item $\{\omega|\omega\text{ tiene longitud par}\}$
+        \input{sipser14/g/g1}
+        
+        \item $\{\omega|\omega\text{ tiene un número impar de letras \texttt{a}}\}$
+        \input{sipser14/g/g2}
+        
+        \item Haciendo la tabla
+        \input{sipser14/g/gt}
+        
+        \item Haciendo el autómata
+        \input{sipser14/g/gr}
+    \end{itemize}    
+    
+\end{enumerate}
+
+\subsection*{Ejercicio 1.6}
+Dar los diagramas de estado de los AFD que reconocen los siguientes lenguajes. Para cada uno el alfabeto es $\{0,1\}$
+\begin{enumerate}[a.]
+    \item $\{\omega|\omega\text{ empieza con 1 y acaba con 0\}}$
+    \input{sipser16/a}
+    
+    \item $\{\omega|\omega\text{ contiene al menos tres números 1}\}$
+    \input{sipser16/b}
+    
+    \item $\{\omega|\omega\text{ contiene la subcadena 0101}\}$
+    \input{sipser16/c}
+    
+    \item $\{\omega|\omega\text{ tiene longitud mayor o igual a 3 y su tercer símbolo es 0}\}$
+    \input{sipser16/d}
+    
+    \item $\{\omega|\omega\text{ empieza con 0 y tiene longitud impar, o empieza con uno y tiene longitud par}\}$
+    \input{sipser16/e}
+    
+    \item $\{\omega|\omega\text{ no contiene la subcadena 110}\}$
+    \input{sipser16/f}
+    
+    \item $\{\omega|\text{la longitud de }\omega\text{ es a lo mucho 5}\}$
+    \input{sipser16/g}
+    
+    \item $\{\omega|\omega\text{ es cualquier cadena excepto 11 y 111}\}$
+    \input{sipser16/h}
+    
+    \item $\{\omega|\text{cualquier posición impar de }\omega\text{ es un 1}\}$
+    \input{sipser16/i}
+    
+    \item $\{\omega|\omega\text{ contiene al menos dos números 0 y como mucho un 1}\}$
+    \input{sipser16/j}
+    
+    \item $\{\varepsilon,0\}$
+    \input{sipser16/k}
+    
+    \item $\{\omega|\omega\text{ contiene un número par de números 0, o contiene exactamente dos números 1}\}$
+    \input{sipser16/l}
+    
+    \item El conjunto vacío.
+    \input{sipser16/m}
+    
+    \item Todas las cadenas menos la cadena vacía
+    \input{sipser16/n}
+\end{enumerate}
+
+\subsection*{Ejercicio 1.8}
+Use la construcción en la demostración del teorema 1.45 para dar los diagramas de estado de los AFND reconociendo la unión de los lenguajes descritos en
+\begin{enumerate}[a.]
+    \item Ejercicios 1.6a y 1.6b.
+    
+    \item Ejercicios 1.6c y 1.6f.
+\end{enumerate}
+
+\subsection*{Ejercicio 1.11}
+Demuestre que todo AFND puede ser convertido a uno equivalente que tenga un solo estado de aceptación.\vspace{0.5em}\\
+Teniendo un AFND $N=\{Q,\Sigma,\delta,s,F\}$ tal que la cardinalidad de $F$ es mayor a 1. Construiremos un nuevo AFND $N'$ tal que $N'=\{Q',\Sigma',\delta',s',F'\}$ en donde:
+\begin{itemize}
+    \item $Q'=Q\cup\{q_a\}$
+    
+    \item $\Sigma=\Sigma'$
+    
+    \item $\delta'(q,r)=\left\{
+    \begin{array}{ll}
+        \delta(q,r) & q\not\in F\text{ y }r\not=\epsilon\\
+        q_a & q\in F\text{ y }r=\epsilon
+    \end{array}
+    \right.$
+    
+    \item $s'=s$
+    
+    \item $F'=\{q_a\}$
+\end{itemize}
+Esto quiere decir que se conecta cada estado aceptado por $N$ con un nuevo estado único de aceptación $\{q_a\}$ y se puede llegar a él a partir de una $\varepsilon$–transición, por lo tanto se unifican todos los estados de aceptación en uno solo. Similar a lo que hacemos para transformar un autómata a una expresión regular.
+
+\subsection*{Ejercicio 1.12}
+Sea $D = \{w|w$ contiene un número par de letras \texttt{a}, un número impar de letras \texttt{b} y no contiene la subcadena \texttt{ab}$\}$. Dé un AFD con cinco estados que reconozca $D$ y una expresión regular que genere a $D$. (Sugerencia: Describa $D$ de manera más simple).
+\input{sipser112/AFD}
+
+\subsection*{Ejercicio 1.14}
+\begin{enumerate}[a)]
+    \item Demuestre que si $M$ es un AFD que reconoce el lenguaje $B$, intercambiando el estado de aceptación y de no aceptación en $M$ produce un nuevo AFD reconociendo el complemento de $B$. Concluya que la clase de lenguajes regulares es cerrado bajo complemento.\vspace{0.5em}\\
+    Teniendo un AFD $M=\{Q,\Sigma,\delta,s,F\}$ tal que $L(M)=B$ entonces intercambiar los estados de aceptación por no aceptación y viceversa significa que todas las cadenas no aceptadas ahora lo serán, formando el lenguaje $A$. Tal que $\Sigma^*=A\cup B$ y $A\cap B=\varnothing$, esto significa que $A=B^c$. Lo que nos daría un nuevo autómata $M'=\{Q',\Sigma',\delta',s',F'\}$ tal que:
+    \begin{itemize}
+        \item $Q'=Q$
+        \item $\Sigma'=\Sigma$
+        \item $\delta'=\delta$
+        \item $s'=s$
+        \item $F'=Q\backslash F$
+    \end{itemize}
+    
+    \item Demuestre dando un ejemplo de que si $M$ es un AFND que reconoce al lenguaje $C$, intercambiando los estados de aceptación y no aceptación en $M$ no necesariamente produce un nuevo AFND que reconozca el complemento de $C$. ¿Es la clase de lenguajes reconocidos por por ANFD cerrado bajo complemento? Explique su respuesta.\vspace{0.5em}\\
+\end{enumerate}
+
+\subsection*{Ejercicio 1.16}
+Use la construcción dada en el teorema 1.39 para convertir el siguiente autómata finito no determinista a su equivalente autómata finito determinista.
+\begin{multicols}{2}
+\begin{center}
+\input{sipser116/afnd1}\\
+(a)\phantom{M}
+\end{center}
+
+\begin{center}
+\input{sipser116/afnd2}\\
+\phantom{Mx}(b)
+\end{center}
+\end{multicols}
+
+\subsection*{Ejercicio 1.17}
+\begin{enumerate}[a.]
+    \item Dé un ANFD reconociendo el lenguaje (\texttt{01}\,$\cup$\,\texttt{001}\,$\cup$\,\texttt{010})$^*$.
+    
+    \item Convierta este ANFD a un AFD equivalente. Dé únicamente la porción del AFD que es alcanzable desde el estado inicial.
+\end{enumerate}
+
+\subsection*{Ejercicio 1.19}
+Use el procedimiento descrito en el Lema 1.55 para convertir la siguiente expresión regular a un autómata finito no determinista.
+\begin{enumerate}[a.]
+    \item (\texttt{0}\,$\cup$\,\texttt{1})$^*$\texttt{000}(\texttt{0}\,$\cup$\,\texttt{1})$^*$
+    
+    \item (((\texttt{00})$^*$(\texttt{11}))\,$\cup$\,\texttt{01})$^*$
+    
+    \item $\varnothing^*$
+\end{enumerate}
+
+\subsection*{Ejercicio 1.21}
+Use el procedimiento descrito en el Lema 1.60 para convertir el siguiente autómata finito a expresiones regulares.
+\begin{multicols}{2}
+\begin{center}
+\input{sispser121/afnd1}\\
+(a)\phantom{M}
+\end{center}
+
+\begin{center}
+\input{sispser121/afnd2}\\
+(b)\phantom{M}
+\end{center}
+\end{multicols}
+\begin{enumerate}[a)]
+    \item Primer grafo
+    \begin{itemize}
+        \item Añadiendo el estado inicial y final.
+        \input{sispser121/soluciona/graph1}
+        \item Tomando $q_{\text{rip}}=1$.
+        \input{sispser121/soluciona/graph2}
+        \item Tomando $q_{\text{rip}}=2$.
+        \input{sispser121/soluciona/graph3}
+    \end{itemize}
+    
+    \item Segundo grafo
+    \begin{itemize}
+        \item Añadiendo estado inicial y final
+        \input{sispser121/solucionb/graph1}
+        \item Tomando $q_{\text{rip}}=3$.
+        \input{sispser121/solucionb/graph2}
+        \item Tomando $q_{\text{rip}}=2$.
+        \input{sispser121/solucionb/graph3}
+        \item Tomando $q_{\text{rip}}=1$.
+        \input{sispser121/solucionb/graph4}
+    \end{itemize}
+\end{enumerate}
+\end{document}

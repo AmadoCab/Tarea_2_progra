@@ -1,0 +1,13 @@
+\begin{center}
+\begin{tikzpicture}
+% Nodes
+\node (qs) at (0,0) []{$q_s$};
+\node (qa) at (9,0) []{$q_a$};
+% Circles
+\draw[] (qs) circle[radius=0.5];
+\draw[] (qa) circle[radius=0.35] circle[radius=0.5];
+% Edges
+\draw[Latex-] ($(qs)+(180:0.5)$) to[] +(180:0.5);
+\draw[-Latex] ($(qs)+(0:0.5)$) to[] node[auto] {$\varepsilon$(\texttt{(a|b)(a|(bb)$^*$)$^*$(ba)})$^*$($\varepsilon$\texttt{|((a|b)(a|(bb)$^*$)$^*$b)})} ($(qa)+(180:0.5)$);
+\end{tikzpicture}
+\end{center}

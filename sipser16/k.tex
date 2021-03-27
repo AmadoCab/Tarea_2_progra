@@ -1,0 +1,18 @@
+\begin{center}
+\begin{tikzpicture}
+% Nodes
+\node (q0) at (0,0) []{$q_0$};
+\node (q1) at (2.5,0) []{$q_1$};
+\node (q2) at (60:2.5) []{$q_2$};
+% Circles
+\draw[] (q0) circle[radius=0.35] circle[radius=0.5];
+\draw[] (q1) circle[radius=0.5];
+\draw[] (q2) circle[radius=0.35] circle[radius=0.5];
+% Edges
+\draw[Latex-] ($(q0)+(180:0.5)$) to[] +(-0.5,0);
+\draw[-Latex] ($(q0)+(60:0.5)$) to[] node[auto]{$0$} ($(q2)+(-120:0.5)$);
+\draw[-Latex] ($(q0)+(0:0.5)$) to[] node[auto,swap]{$1$} ($(q1)+(180:0.5)$);
+\draw[-Latex] ($(q2)+(-60:0.5)$) to[] node[auto]{$0,1$} ($(q1)+(120:0.5)$);
+\draw[-Latex] ($(q1)+(30:0.5)$) arc[y radius=0.25,x radius=0.5,start angle=100,end angle=-100] node[midway,auto]{$0,1$};
+\end{tikzpicture}
+\end{center}

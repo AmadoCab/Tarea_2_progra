@@ -1,0 +1,30 @@
+\begin{center}
+\begin{tikzpicture}
+% Nodes
+\node (q0) at (0,0) []{$q_0$};
+\node (q1) at (0,-2) []{$q_1$};
+\node (q2) at (2,0) []{$q_2$};
+\node (q4) at (6,-2) []{$q_4$};
+\node (q6) at (2,-2) []{$q_6$};
+\node (q3) at (4,0) []{$q_3$};
+\node (q5) at (4,-2) []{$q_5$};
+% Circles
+\draw[] (q0) circle[radius=0.35] circle[radius=0.5];
+\draw[] (q1) circle[radius=0.35] circle[radius=0.5];
+\draw[] (q2) circle[radius=0.35] circle[radius=0.5];
+\draw[] (q3) circle[radius=0.35] circle[radius=0.5];
+\draw[] (q4) circle[radius=0.35] circle[radius=0.5];
+\draw[] (q5) circle[radius=0.35] circle[radius=0.5];
+\draw[] (q6) circle[radius=0.5];
+% Edges
+\draw[Latex-] ($(q0)+(180:0.5)$) to[] +(-0.5,0);
+\draw[-Latex] ($(q0)+(-90:0.5)$) to[] node[auto,swap]{$0,1$} ($(q1)+(90:0.5)$);
+\draw[-Latex] ($(q1)+(45:0.5)$) to[] node[auto]{$0,1$} ($(q2)+(-135:0.5)$);
+\draw[-Latex] ($(q2)+(0:0.5)$) to[] node[auto]{$0,1$} ($(q3)+(180:0.5)$);
+\draw[-Latex] ($(q3)+(-45:0.5)$) to[] node[auto]{$0,1$} ($(q4)+(135:0.5)$);
+\draw[-Latex] ($(q4)+(180:0.5)$) to[] node[auto]{$0,1$} ($(q5)+(0:0.5)$);
+\draw[-Latex] ($(q5)+(180:0.5)$) to[] node[auto]{$0,1$} ($(q6)+(0:0.5)$);
+\draw[-Latex] ($(q6)+(-120:0.5)$) arc[x radius=0.25,y radius=0.5,start angle=180,end angle=360] node[midway,auto,swap]{$0,1$};
+\end{tikzpicture}\\
+{\scriptsize Parece una tortuguita.}
+\end{center}

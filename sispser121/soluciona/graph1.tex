@@ -1,0 +1,22 @@
+\begin{center}
+\begin{tikzpicture}
+% Nodes
+\node (qe) at (0,0) []{$1$};
+\node (qo) at (2.5,0) []{$2$};
+\node (qs) at (-2.5,0) []{$q_{\text{s}}$};
+\node (qa) at (5,0) []{$q_{\text{a}}$};
+% Circles
+\draw[] (qs) circle[radius=0.5];
+\draw[] (qe) circle[radius=0.5];
+\draw[] (qa) circle[radius=0.4] circle[radius=0.5];
+\draw[] (qo) circle[radius=0.5];
+% Edges
+\draw[Latex-] ($(qs)+(-0.5,0)$) to[] +(-0.5,0);
+\draw[-Latex] ($(qs)+(0:0.5)$) to[] node[auto]{$\varepsilon$} ($(qe)+(180:0.5)$);
+\draw[-Latex] ($(qe)+(30:0.5)$) to[bend left] node[auto]{\texttt{b}} ($(qo)+(150:0.5)$);
+\draw[-Latex] ($(qo)+(210:0.5)$) to[bend left] node[auto]{\texttt{b}} ($(qe)+(-30:0.5)$);
+\draw[-Latex] ($(qe)+(60:0.5)$) arc[x radius=0.25,y radius=0.5,start angle=-15,end angle=195] node[auto,swap,midway]{\texttt{a}};
+\draw[-Latex] ($(qo)+(60:0.5)$) arc[x radius=0.25,y radius=0.5,start angle=-15,end angle=195] node[auto,swap,midway]{\texttt{a}};
+\draw[-Latex] ($(qo)+(0:0.5)$) to[] node[auto]{$\varepsilon$} ($(qa)+(180:0.5)$);
+\end{tikzpicture}
+\end{center}

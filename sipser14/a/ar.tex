@@ -1,0 +1,33 @@
+\begin{center}
+\begin{tikzpicture}
+% Nodes
+\node (q0) at (0:2.8) []{$q_0,q_0'$};
+\node (q1) at (30:2.8) []{$q_0,q_1'$};
+\node (q2) at (60:2.8) []{$q_0,q_2'$};
+\node (q3) at (90:2.8) []{$q_1,q_0'$};
+\node (q4) at (120:2.8) []{$q_1,q_1'$};
+\node (q5) at (150:2.8) []{$q_1,q_2'$};
+\node (q6) at (180:2.8) []{$q_2,q_0'$};
+\node (q7) at (210:2.8) []{$q_2,q_1'$};
+\node (q8) at (240:2.8) []{$q_2,q_2'$};
+\node (q9) at (270:2.8) []{$q_3,q_0'$};
+\node (q10) at (300:2.8) []{$q_3,q_1'$};
+\node (q11) at (330:2.8) []{$q_3,q_2'$};
+% Circles
+\draw[] (q0) circle[radius=0.5];
+\draw[] (q1) circle[radius=0.5];
+\draw[] (q2) circle[radius=0.5];
+\draw[] (q3) circle[radius=0.5];
+\draw[] (q4) circle[radius=0.5];
+\draw[] (q5) circle[radius=0.5];
+\draw[] (q6) circle[radius=0.5];
+\draw[] (q7) circle[radius=0.5];
+\draw[] (q8) circle[radius=0.5];
+\draw[] (q9) circle[radius=0.5];
+\draw[] (q10) circle[radius=0.5];
+\draw[] (q11) circle[radius=0.45] circle[radius=0.5];
+% Edges
+\draw[Latex-] ($(q0)+(0:0.5)$) to[] +(0.5,0);
+\draw[-Latex] ($(q0)+(0:0.5)$) to[] ($(q2)+(0:0.5)$);
+\end{tikzpicture}
+\end{center}
